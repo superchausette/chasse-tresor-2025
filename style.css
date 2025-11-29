@@ -15,6 +15,42 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 2rem 1rem 4rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 160vw;
+  height: 160vh;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 237, 167, 0.9), transparent 55%),
+    radial-gradient(circle at 80% 0%, rgba(255, 170, 214, 0.8), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(166, 225, 250, 0.8), transparent 60%);
+  filter: blur(40px);
+  z-index: -2;
+  animation: floatBackground 25s linear infinite alternate;
+}
+
+body::after {
+  animation-duration: 15s;
+  animation-direction: alternate-reverse;
+  opacity: 0.8;
+}
+
+@keyframes floatBackground {
+  0% {
+    transform: translate(-10%, -5%) scale(1);
+  }
+  50% {
+    transform: translate(-5%, -2%) scale(1.05);
+  }
+  100% {
+    transform: translate(-2%, -12%) scale(1.1);
+  }
 }
 
 .wrapper {
