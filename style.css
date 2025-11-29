@@ -1,14 +1,14 @@
 :root {
   font-family: "Comic Neue", "Comic Sans MS", system-ui, sans-serif;
-  color: #f9edd2;
-  background: radial-gradient(circle at top, #09131c, #030408 60%);
-  --ink-dark: #23160f;
-  --parchment: #f5e0b6;
-  --parchment-dark: #c19a62;
-  --accent-gold: #d9a441;
-  --accent-crimson: #7c1b16;
-  --accent-teal: #146b6f;
-  --shadow: rgba(0, 0, 0, 0.4);
+  color: #362512;
+  background: radial-gradient(circle at top, #fbe9c7, #f9d493 65%);
+  --ink-dark: #2d1a12;
+  --parchment: #fff5d8;
+  --parchment-dark: #e6c790;
+  --accent-gold: #d89f2d;
+  --accent-crimson: #a03a2a;
+  --accent-teal: #1f7d82;
+  --shadow: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -24,7 +24,7 @@ body {
   padding: 2rem 1rem 4rem;
   position: relative;
   overflow-x: hidden;
-  background: radial-gradient(circle at top, #0f1925, #050609 65%);
+  background: radial-gradient(circle at top, #fef6da, #f9dea6 70%);
 }
 
 body::before,
@@ -35,21 +35,21 @@ body::after {
   z-index: -2;
   background: repeating-linear-gradient(
       120deg,
-      rgba(255, 255, 255, 0.04),
-      rgba(255, 255, 255, 0.04) 4px,
+      rgba(129, 85, 43, 0.08),
+      rgba(129, 85, 43, 0.08) 4px,
       transparent 4px,
       transparent 14px
     ),
-    radial-gradient(circle at 10% 20%, rgba(255, 193, 94, 0.2), transparent 45%),
-    radial-gradient(circle at 80% 5%, rgba(255, 99, 99, 0.2), transparent 40%),
-    radial-gradient(circle at 50% 80%, rgba(30, 120, 130, 0.35), transparent 50%);
+    radial-gradient(circle at 10% 20%, rgba(255, 210, 112, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 5%, rgba(255, 133, 108, 0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(38, 147, 154, 0.3), transparent 50%);
   animation: waves 32s ease-in-out infinite;
 }
 
 body::after {
-  opacity: 0.55;
+  opacity: 0.45;
   filter: blur(18px);
-  animation-duration: 48s;
+  animation-duration: 42s;
   animation-direction: reverse;
 }
 
@@ -64,11 +64,11 @@ body::after {
 
 .wrapper {
   width: min(900px, 100%);
-  background: linear-gradient(165deg, rgba(245, 224, 182, 0.96), rgba(193, 154, 98, 0.95));
+  background: linear-gradient(165deg, rgba(255, 247, 220, 0.98), rgba(233, 204, 152, 0.95));
   border-radius: 1.5rem;
   padding: 2.5rem;
-  box-shadow: 0 30px 60px var(--shadow);
-  border: 4px solid rgba(35, 22, 15, 0.35);
+  box-shadow: 0 25px 45px var(--shadow);
+  border: 4px solid rgba(45, 26, 18, 0.25);
   position: relative;
 }
 
@@ -86,11 +86,11 @@ body::after {
 }
 
 .gate-card {
-  background: linear-gradient(140deg, rgba(249, 233, 196, 0.95), rgba(196, 160, 110, 0.95));
+  background: linear-gradient(140deg, rgba(255, 247, 225, 0.96), rgba(228, 198, 146, 0.95));
   border-radius: 1.5rem;
   padding: 2.5rem;
-  box-shadow: 0 25px 60px var(--shadow);
-  border: 4px solid rgba(35, 22, 15, 0.4);
+  box-shadow: 0 20px 40px var(--shadow);
+  border: 4px solid rgba(35, 22, 15, 0.3);
   display: grid;
   gap: 1.25rem;
   position: relative;
@@ -113,7 +113,7 @@ body::after {
   padding: 0.75rem 1rem;
   border-radius: 0.75rem;
   border: 2px solid var(--accent-crimson);
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   font-size: 1.2rem;
   letter-spacing: 0.22rem;
   text-align: center;
@@ -176,8 +176,8 @@ header p {
 }
 
 .safe {
-  background: linear-gradient(145deg, #2a2018, #18140f);
-  color: #fff;
+  background: linear-gradient(145deg, #f3d9a5, #e3bc7d);
+  color: #3a1e0f;
   border-radius: 1.25rem;
   padding: 1.5rem;
   display: grid;
@@ -195,7 +195,7 @@ header p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(160deg, #3a2f25, #1c140f);
+  background: linear-gradient(160deg, #fff3cf, #f1d9a4);
   border-radius: 0.75rem;
   border: 3px solid rgba(217, 164, 65, 0.6);
   padding: 1rem 0;
@@ -227,10 +227,10 @@ header p {
 }
 
 .puzzle {
-  background: rgba(255, 236, 205, 0.95);
+  background: rgba(255, 248, 229, 0.95);
   border-radius: 1rem;
   padding: 1.25rem;
-  border: 3px solid transparent;
+  border: 3px solid rgba(45, 26, 18, 0.15);
   transition: border-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
@@ -320,6 +320,55 @@ button:disabled {
 .puzzle.solved {
   border-color: var(--accent-gold);
   transform: translateY(-4px);
+}
+
+.flag-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pirate-flag {
+  position: relative;
+  width: 70px;
+  height: 38px;
+  background: linear-gradient(120deg, #121213, #2c2c2f);
+  border: 2px solid #f1d28f;
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pirate-flag::before {
+  content: "☠";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #fef6d9;
+}
+
+.pirate-flag::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 4px;
+  height: 50px;
+  background: #6b3d1a;
+  border-radius: 2px;
+}
+
+.pirate-flag:nth-child(even) {
+  transform: rotate(-4deg);
+}
+
+.pirate-flag:nth-child(odd) {
+  transform: rotate(3deg);
 }
 
 @media (max-width: 600px) {

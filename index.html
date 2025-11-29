@@ -16,12 +16,19 @@
           correctement pour ouvrir la porte magique.
         </p>
 
+        <div class="flag-row" aria-hidden="true">
+          <span class="pirate-flag"></span>
+          <span class="pirate-flag"></span>
+          <span class="pirate-flag"></span>
+          <span class="pirate-flag"></span>
+        </div>
+
         <form id="gateForm" autocomplete="off">
           <label for="gateCode">Code secret (8 chiffres)</label>
           <input
             id="gateCode"
             name="gateCode"
-            type="password"
+            type="text"
             inputmode="numeric"
             pattern="\d{8}"
             minlength="8"
