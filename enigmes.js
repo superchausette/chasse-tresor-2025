@@ -273,6 +273,7 @@ function handleSubmit(event) {
     if (!puzzleCard.classList.contains("solved")) {
       revealDigit(slot);
       feedback.textContent = "Oui ! Tu as trouvé un chiffre du code.";
+      movePuzzleToEnd(puzzleCard);
     } else {
       feedback.textContent = "Chiffre déjà dévoilé. Bravo !";
     }
@@ -334,4 +335,11 @@ function revealDigit(slot) {
     safeMessage.textContent =
       "Code déverrouillé ! Le trésor est à toi : 3-8-5-2-7-4-9-1";
   }
+}
+
+function movePuzzleToEnd(card) {
+  if (!card || card.parentElement !== puzzleContainer) {
+    return;
+  }
+  puzzleContainer.appendChild(card);
 }
