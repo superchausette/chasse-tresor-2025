@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffre de la Chasse au Trésor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if (sessionStorage.getItem("treasureAccess") !== "granted") {
+        window.location.href = "index.html";
+      }
+    </script>
+  </head>
+  <body>
+    <main class="wrapper">
+      <header>
+        <h1>Coffre de la Chasse au Trésor Aurélien</h1>
+        <p>
+          Réponds à chaque énigme pour révéler un chiffre lumineux. Trouve les
+          huit nombres pour ouvrir le coffre et gagne le trésor ! Tu peux changer
+          un indice si tu veux un nouveau défi.
+        </p>
+      </header>
+
+      <section class="safe" aria-live="polite">
+        <div class="safe-digit" data-safe-slot="0">?</div>
+        <div class="safe-digit" data-safe-slot="1">?</div>
+        <div class="safe-digit" data-safe-slot="2">?</div>
+        <div class="safe-digit" data-safe-slot="3">?</div>
+        <div class="safe-digit" data-safe-slot="4">?</div>
+        <div class="safe-digit" data-safe-slot="5">?</div>
+        <div class="safe-digit" data-safe-slot="6">?</div>
+        <div class="safe-digit" data-safe-slot="7">?</div>
+        <div class="safe-message" id="safeMessage">
+          Le code attend d'être découvert...
+        </div>
+      </section>
+
+      <section class="puzzles" id="puzzleContainer">
+        <!-- Les cartes d'énigmes seront ajoutées ici -->
+      </section>
+    </main>
+
+    <script src="enigmes.js"></script>
+  </body>
+</html>

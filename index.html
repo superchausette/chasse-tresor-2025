@@ -3,39 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coffre de la Chasse au Trésor</title>
+    <title>Gardien du Coffre</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="wrapper">
-      <header>
-        <h1>Coffre de la Chasse au Trésor Aurélien  </h1>
+    <main class="gate-wrapper">
+      <section class="gate-card">
+        <h1>Garde du Coffre</h1>
         <p>
-          Réponds à chaque énigme pour révéler un chiffre lumineux. Trouve les
-          huit nombres pour ouvrir le coffre et gagne le trésor ! Tu peux changer
-          un indice si tu veux un nouveau défi.
+          Seuls les aventuriers qui connaissent le mot de passe à 8 chiffres
+          peuvent entrer dans la salle aux énigmes. Prépare-toi à le taper
+          correctement pour ouvrir la porte magique.
         </p>
-      </header>
 
-      <section class="safe" aria-live="polite">
-        <div class="safe-digit" data-safe-slot="0">?</div>
-        <div class="safe-digit" data-safe-slot="1">?</div>
-        <div class="safe-digit" data-safe-slot="2">?</div>
-        <div class="safe-digit" data-safe-slot="3">?</div>
-        <div class="safe-digit" data-safe-slot="4">?</div>
-        <div class="safe-digit" data-safe-slot="5">?</div>
-        <div class="safe-digit" data-safe-slot="6">?</div>
-        <div class="safe-digit" data-safe-slot="7">?</div>
-        <div class="safe-message" id="safeMessage">
-          Le code attend d'être découvert...
-        </div>
-      </section>
+        <form id="gateForm" autocomplete="off">
+          <label for="gateCode">Code secret (8 chiffres)</label>
+          <input
+            id="gateCode"
+            name="gateCode"
+            type="password"
+            inputmode="numeric"
+            pattern="\d{8}"
+            minlength="8"
+            maxlength="8"
+            required
+          />
+          <button type="submit">Ouvrir la porte</button>
+        </form>
 
-      <section class="puzzles" id="puzzleContainer">
-        <!-- Les cartes d'énigmes seront ajoutées ici -->
+        <button type="button" class="hint-button" id="hintButton">
+          Besoin d'un indice ?
+        </button>
+        <p class="gate-feedback" id="gateFeedback" aria-live="polite"></p>
       </section>
     </main>
 
-    <script src="enigmes.js"></script>
+    <script>
+      const correctCode = "26112017";
+      const form = document.getElementById("gateForm");
+      const codeInput = document.getElementById("gateCode");
+      const feedback = document.getElementById("gateFeedback");
+      const hintButton = document.getElementById("hintButton");
+      const hints = [
+        "Le code est composé des chiffres découverts dans les énigmes.",
+        "Il y a quatre chiffres, puis encore quatre autres.",
+        "Les deux premiers chiffres forment un nombre plus grand que 30.",
+        "Le dernier chiffre est le premier chiffre à l'envers.",
+      ];
+      let hintIndex = 0;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const guess = codeInput.value.trim();
+
+        if (guess.length !== 8) {
+          feedback.textContent = "Le code doit avoir exactement 8 chiffres.";
+          feedback.className = "gate-feedback incorrect";
+          return;
+        }
+
+        if (guess === correctCode) {
+          feedback.textContent = "Bravo ! La porte magique s'ouvre...";
+          feedback.className = "gate-feedback correct";
+          sessionStorage.setItem("treasureAccess", "granted");
+          setTimeout(() => {
+            window.location.href = "coffre.html";
+          }, 800);
+        } else {
+          feedback.textContent = "Mauvais code. Réessaie !";
+          feedback.className = "gate-feedback incorrect";
+          codeInput.value = "";
+          codeInput.focus();
+        }
+      });
+
+      hintButton.addEventListener("click", () => {
+        feedback.textContent = hints[hintIndex];
+        feedback.className = "gate-feedback hint";
+        hintIndex = (hintIndex + 1) % hints.length;
+      });
+    </script>
   </body>
 </html>
