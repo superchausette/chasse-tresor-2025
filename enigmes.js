@@ -3,6 +3,8 @@ const safeDigits = document.querySelectorAll(".safe-digit");
 const safeMessage = document.getElementById("safeMessage");
 const puzzleContainer = document.getElementById("puzzleContainer");
 const totalSlots = digitMap.length;
+const successSound = document.getElementById("successSound");
+const errorSound = document.getElementById("errorSound");
 
 const cluePool = [
   {
@@ -270,6 +272,10 @@ function handleSubmit(event) {
   const isCorrect = validAnswers.some((answer) => answer === userAnswer);
 
   if (isCorrect) {
+    if (successSound) {
+      successSound.currentTime = 0;
+      successSound.play().catch(() => {});
+    }
     if (!puzzleCard.classList.contains("solved")) {
       revealDigit(slot);
       feedback.textContent = "Oui ! Tu as trouvé un chiffre du code.";
@@ -283,6 +289,10 @@ function handleSubmit(event) {
     submitButton.disabled = true;
     changeButton.disabled = true;
   } else {
+    if (errorSound) {
+      errorSound.currentTime = 0;
+      errorSound.play().catch(() => {});
+    }
     feedback.textContent = "Pas tout à fait. Relis l'indice !";
     feedback.className = "feedback incorrect";
   }
