@@ -63,7 +63,7 @@ body::after {
 }
 
 .wrapper {
-  width: min(900px, 100%);
+  width: min(1100px, 100%);
   background: linear-gradient(165deg, rgba(255, 247, 220, 0.98), rgba(233, 204, 152, 0.95));
   border-radius: 1.5rem;
   padding: 2.5rem;
@@ -81,7 +81,7 @@ body::after {
 }
 
 .gate-wrapper {
-  width: min(520px, 100%);
+  width: min(640px, 100%);
   margin: 4vh auto 0;
 }
 
@@ -179,9 +179,9 @@ header p {
   background: linear-gradient(145deg, #f3d9a5, #e3bc7d);
   color: #3a1e0f;
   border-radius: 1.25rem;
-  padding: 1.5rem;
+  padding: 1.75rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   gap: 1rem;
   margin-bottom: 2.5rem;
   align-items: stretch;
@@ -191,16 +191,16 @@ header p {
 }
 
 .safe-digit {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(160deg, #fff3cf, #f1d9a4);
   border-radius: 0.75rem;
   border: 3px solid rgba(217, 164, 65, 0.6);
-  padding: 1rem 0;
+  padding: 1.1rem 0;
   width: 100%;
-  min-height: 90px;
+  min-height: 95px;
   text-align: center;
   transition: transform 0.3s ease, border-color 0.3s ease,
     box-shadow 0.3s ease;
@@ -382,5 +382,34 @@ button:disabled {
 
   .puzzles {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    padding: 4rem 2.5rem 5rem;
+  }
+
+  .wrapper {
+    padding: 3rem 3.5rem;
+  }
+
+  .safe {
+    grid-template-columns: repeat(4, minmax(110px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .safe-digit {
+    font-size: 3rem;
+    min-height: 120px;
+  }
+
+  .puzzle {
+    padding: 1.5rem 1.75rem;
+    font-size: 1.05rem;
+  }
+
+  .gate-card {
+    padding: 3rem;
   }
 }
