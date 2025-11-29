@@ -45,6 +45,13 @@
         <p class="gate-feedback" id="gateFeedback" aria-live="polite"></p>
       </section>
     </main>
+    <audio>
+      <audio id="successSound" preload="auto">
+      <source src="success.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="errorSound" preload="auto">
+      <source src="error.mp3" type="audio/mpeg" />
+    </audio>
 
     <script>
       const correctCode = "26112017";
@@ -74,6 +81,11 @@
           feedback.textContent = "Bravo ! La porte magique s'ouvre...";
           feedback.className = "gate-feedback correct";
           sessionStorage.setItem("treasureAccess", "granted");
+
+          if (successSound) {
+            successSound.currentTime = 0;
+            successSound.play().catch(() => {});
+          }
           setTimeout(() => {
             window.location.href = "coffre.html";
           }, 800);
@@ -81,6 +93,10 @@
           feedback.textContent = "Mauvais code. Réessaie !";
           feedback.className = "gate-feedback incorrect";
           codeInput.value = "";
+          if (errorSound) {
+            errorSound.currentTime = 0;
+            errorSound.play().catch(() => {});
+          }
           codeInput.focus();
         }
       });
